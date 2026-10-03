@@ -14,7 +14,7 @@ Each part is built, published, and proven before the next one starts.
 
 | # | Part | What it does | Status |
 |---|------|--------------|--------|
-| 1 | The pool | A contract holds the money. A coin is only created when a dollar comes in. | Not started |
+| 1 | The pool | A contract holds the money. A coin is only created when a dollar comes in. | In progress: step 1 of 5 done, see [proof](proofs/part-1-open) |
 | 2 | Fair assignment | Who tests which service is drawn from a public seed, so anyone can re-run the draw. | Not started |
 | 3 | Committed answers | The test is locked in before the seller replies, so the result can be checked afterwards. | Not started |
 | 4 | Second readings | A different member re-tests a service, to catch a rating that was wrong or has gone stale. | Not started |

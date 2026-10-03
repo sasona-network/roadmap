@@ -1,0 +1,11 @@
+{
+  "rpc": "https://api.devnet.solana.com",
+  "program": "7eiHSnDkM4WjJdY36D2Yqsjw893mCMUtBAwMCQ5adL99",
+  "usd_mint": "ACPdQtaC6HKgT8V4GVRke57vtZrbv3zDqTwvENBoRPCy",
+  "binary": {
+    "bytes": 249776,
+    "sha256": "72885d95f1a65697cba0d0056493bf89623869229d50f0f1eb182dca177817e0"
+  },
+  "deploy_tx": "3wuWewCwv9xaZF69P9pfYct8wa1HzsmFXgWME4MdN91AnEEt2kWpFeJNDoQvHxZ1tR3yVXa8L7M8gR3kgWuaCDrw",
+  "open_tx": "3kshFbZaEDYVoPhuXnrJ825agQWHo22RBUNpUPod6y15Ury2UXeEqTfJTpkTvd79o9Qnd2Tcw48q5Ss6RyoQkByE"
+}
