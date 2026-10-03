@@ -1,0 +1,16 @@
+{
+  "rpc": "https://api.devnet.solana.com",
+  "program": "7eiHSnDkM4WjJdY36D2Yqsjw893mCMUtBAwMCQ5adL99",
+  "usd_mint": "ACPdQtaC6HKgT8V4GVRke57vtZrbv3zDqTwvENBoRPCy",
+  "binary": {
+    "bytes": 289376,
+    "sha256": "bc05399f6af8191c0b83e8d3d10b4e1fe5d0a34d3767504d26c8e221b7aaede2"
+  },
+  "upgrade_tx": "33iT5CDu3qnnCJNGhBAxzVzXhCxrbdREBF8CTq3Q9mFqYVVWujZhkP4Yz26LQ8jxRwCnYsBS9dvf4cX6NprrQSTM",
+  "fee_txs": [
+    "4eNwGPDyGP8Ni1awnP9qy1Hy3aSmDeW8cApRJJQ8VTvmh8DsBXAndvMm7ENq7UgzqZDPtMypSrEn4z764CiKhUTK"
+  ],
+  "settle_txs": [
+    "2Jq6WPFbL9rbRGUC5FzU5PvAiH5pRFowLC4o7HBPqsYVFyN27KUdrr2syN4xnzwyRGPrm1pQoJiUwGZhEdr5mdju"
+  ]
+}

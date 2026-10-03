@@ -1,4 +1,4 @@
-"""Check deposits into the Sasona pool against Solana devnet.
+"""Check fees paid into the Sasona pool against Solana devnet.
 
     python verify.py
 
@@ -111,6 +111,60 @@ def token_amount(address):
     return struct.unpack_from("<Q", account(address)["bytes"], 64)[0]
 
 
+# ------------------------------------------------------------- one fee tx
+
+def fee_checks(tx, kind, program, pool_usd, pool_coin, fees, network):
+    """Check one fee or settle transaction from its own balances and burns."""
+    keys = [k["pubkey"] for k in tx["transaction"]["message"]["accountKeys"]]
+    meta = tx["meta"]
+    check("called this program", program in keys)
+
+    def balance(which, address):
+        for b in meta[which]:
+            if keys[b["accountIndex"]] == address:
+                return int(b["uiTokenAmount"]["amount"])
+        return 0
+
+    def delta(address):
+        return balance("postTokenBalances", address) - balance("preTokenBalances", address)
+
+    burned = sum(int(ix["parsed"]["info"]["amount"])
+                 for group in meta["innerInstructions"] for ix in group["instructions"]
+                 if ix.get("program") == "spl-token" and ix.get("parsed", {}).get("type") == "burn")
+    out = -delta(pool_coin)
+    shared = delta(network)
+    usd_before = balance("preTokenBalances", pool_usd)
+    coins_before = balance("preTokenBalances", pool_coin)
+
+    if kind == "fee":
+        markup = delta(pool_usd)
+        payer = keys[0]
+        paid = sum(int(b["uiTokenAmount"]["amount"]) * (1 if which == "preTokenBalances" else -1)
+                   for which in ("preTokenBalances", "postTokenBalances") for b in meta[which]
+                   if b.get("owner") == payer and b["mint"] == PROOF["usd_mint"])
+        reserve = markup * 5 // 15
+        buy = markup - reserve
+        check("the payer paid exactly what the pool received", paid == markup, f"${markup / 1e6:,.6f}")
+    else:
+        markup = -delta(fees)
+        reserve = 0
+        buy = markup
+        check("the waiting entry fees moved into the pool", delta(pool_usd) == markup, f"${markup / 1e6:,.2f}")
+    burn_usd = min(-(-markup * 300 // 10_000), buy)      # three percent, rounded up
+
+    # The pool's dollar account held nothing beyond its records, so its balance
+    # before is the reserve the price was read from.
+    # The reserve goes in first, so the buy is priced against the deeper pool.
+    expected = coins_before * buy // (usd_before + reserve + buy)
+    check("coins bought match the pool's price, with the reserve not spent", out == expected,
+          f"{out / 1e6:,.6f} coins for ${buy / 1e6:,.6f}")
+    check("3% of the markup's coin was burned, rounded up", burned == -(-out * burn_usd // buy),
+          f"{burned / 1e6:,.6f} coins")
+    check("the rest went to the network", shared == out - burned, f"{shared / 1e6:,.6f} coins")
+    if reserve:
+        print(f"        kept in the pool as depth: ${reserve / 1e6:,.6f}")
+
+
 # ------------------------------------------------------------------ checks
 
 def main():
@@ -177,46 +231,23 @@ def main():
     check("its fee account holds what it records", token_amount(fees) == fees_held,
           f"${fees_held / 1e6:,.2f}")
 
-    print("\nthe price")
-    # A deposit must not move the price. Read from each deposit's own balances
-    # before and after, so this stays checkable after later steps move it.
-    for sig in PROOF["deposit_txs"]:
-        tx = rpc("getTransaction", [sig, {"encoding": "jsonParsed", "commitment": "finalized",
-                                          "maxSupportedTransactionVersion": 0}])
-        keys = [k["pubkey"] for k in tx["transaction"]["message"]["accountKeys"]]
+    print("\nthe network's coin")
+    network, _ = find_pda([b"network"], program)
+    nv = account(network)
+    check("sits at the address derived from the program", nv is not None, network)
+    check("is held by the pool, which has no key", nv is not None and b58encode(nv["bytes"][32:64]) == pool)
+    print("        (temporary: every participant seat is empty, so the network takes all of it,")
+    print("         and nothing can move it out yet. Both change in later parts.)")
 
-        def bal(which, address):
-            return next(int(b["uiTokenAmount"]["amount"]) for b in tx["meta"][which]
-                        if keys[b["accountIndex"]] == address)
-
-        u0, u1 = bal("preTokenBalances", pool_usd), bal("postTokenBalances", pool_usd)
-        c0, c1 = bal("preTokenBalances", pool_coin), bal("postTokenBalances", pool_coin)
-        drift = c0 * u1 - c1 * u0
-        check(f"{sig[:8]}… left the price where it was", 0 <= drift < u0,
-              f"{c0 / u0:,.4f} → {c1 / u1:,.4f} coins a dollar")
-
-    print("\nthe depositors")
-    for who in PROOF["depositors"]:
-        g = account(find_pda([b"guarantee", b58decode(who)], program)[0])
-        vault, _ = find_pda([b"guarantee-vault", b58decode(who)], program)
-        if g is None:
-            check(f"{who[:8]}… has a guarantee record", False)
-            continue
-        owner = b58encode(g["bytes"][8:40])
-        coins = struct.unpack_from("<Q", g["bytes"], 40)[0]
-        vault_owner = b58encode(account(vault)["bytes"][32:64])
-        check(f"{who[:8]}…'s guarantee record names them", owner == who)
-        check(f"{who[:8]}…'s vault holds what the record says", token_amount(vault) == coins,
-              f"{coins / 1e6:,.0f} coins")
-        check(f"{who[:8]}…'s vault is held by the pool, not by them", vault_owner == pool)
-
-    print("\nthe transactions")
-    for sig in PROOF["deposit_txs"]:
-        tx = rpc("getTransaction", [sig, {"encoding": "json", "commitment": "finalized",
-                                          "maxSupportedTransactionVersion": 0}])
-        ok = (tx is not None and tx["meta"]["err"] is None
-              and program in tx["transaction"]["message"]["accountKeys"])
-        check(f"{sig[:8]}… is final, succeeded, and called this program", ok)
+    for kind, sigs in (("fee", PROOF["fee_txs"]), ("settle", PROOF["settle_txs"])):
+        for sig in sigs:
+            print(f"\n{'a fee' if kind == 'fee' else 'settling entry fees'}  {sig[:8]}…")
+            tx = rpc("getTransaction", [sig, {"encoding": "jsonParsed", "commitment": "finalized",
+                                              "maxSupportedTransactionVersion": 0}])
+            check("is final and succeeded", tx is not None and tx["meta"]["err"] is None)
+            if tx is None:
+                continue
+            fee_checks(tx, kind, program, pool_usd, pool_coin, fees, network)
 
     print()
     if failures:
