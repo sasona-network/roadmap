@@ -1,4 +1,4 @@
-"""Check the opened Sasona pool against Solana devnet.
+"""Check deposits into the Sasona pool against Solana devnet.
 
     python verify.py
 
@@ -177,14 +177,33 @@ def main():
     check("its fee account holds what it records", token_amount(fees) == fees_held,
           f"${fees_held / 1e6:,.2f}")
 
-    print("\nthe opening transaction")
-    tx = rpc("getTransaction", [PROOF["open_tx"], {"encoding": "json", "commitment": "finalized",
-                                                   "maxSupportedTransactionVersion": 0}])
-    check("is final on devnet", tx is not None)
-    check("succeeded", tx["meta"]["err"] is None)
-    keys = tx["transaction"]["message"]["accountKeys"]
-    check("called this program", program in keys)
-    check("created the coin", coin in keys)
+    print("\nthe price")
+    # The pool opened at 5,000 coins a dollar, and a deposit must not move it.
+    check("is still exactly 5,000 coins a dollar", coin_reserve == usd_reserve * 5_000,
+          f"{coin_reserve / 1e6:,.0f} coins for ${usd_reserve / 1e6:,.2f}")
+
+    print("\nthe depositors")
+    for who in PROOF["depositors"]:
+        g = account(find_pda([b"guarantee", b58decode(who)], program)[0])
+        vault, _ = find_pda([b"guarantee-vault", b58decode(who)], program)
+        if g is None:
+            check(f"{who[:8]}… has a guarantee record", False)
+            continue
+        owner = b58encode(g["bytes"][8:40])
+        coins = struct.unpack_from("<Q", g["bytes"], 40)[0]
+        vault_owner = b58encode(account(vault)["bytes"][32:64])
+        check(f"{who[:8]}…'s guarantee record names them", owner == who)
+        check(f"{who[:8]}…'s vault holds what the record says", token_amount(vault) == coins,
+              f"{coins / 1e6:,.0f} coins")
+        check(f"{who[:8]}…'s vault is held by the pool, not by them", vault_owner == pool)
+
+    print("\nthe transactions")
+    for sig in PROOF["deposit_txs"]:
+        tx = rpc("getTransaction", [sig, {"encoding": "json", "commitment": "finalized",
+                                          "maxSupportedTransactionVersion": 0}])
+        ok = (tx is not None and tx["meta"]["err"] is None
+              and program in tx["transaction"]["message"]["accountKeys"])
+        check(f"{sig[:8]}… is final, succeeded, and called this program", ok)
 
     print()
     if failures:

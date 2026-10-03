@@ -37,7 +37,7 @@ python verify.py
 
 Python 3.8 or later, nothing to install. It derives every address from the program again, reads the chain directly, and checks:
 
-- the program on devnet is the binary built from the published source
+- the program on devnet is a binary built from published source. It has been upgraded since this step; [`binaries.json`](../binaries.json) lists each version
 - only the pool can mint the coin, nobody can sign for the pool, nobody can freeze the coin
 - every coin is either in the pool or outside it, and the pool's accounts hold what it has recorded
 - the opening transaction is final and succeeded

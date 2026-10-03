@@ -1,0 +1,14 @@
+[
+  {
+    "step": "part 1, step 1: opening the pool",
+    "bytes": 249776,
+    "sha256": "72885d95f1a65697cba0d0056493bf89623869229d50f0f1eb182dca177817e0",
+    "source": "https://github.com/sasona-network/sasona-program/tree/b235ed491f2ba8a88ad3f2424990f7c8d0105a05"
+  },
+  {
+    "step": "part 1, step 2: deposits",
+    "bytes": 299976,
+    "sha256": "f0c1bd4dfd9cb2cdbe7bc2831a8cc98c04635b04c6d02df47d8f2b53c81b7133",
+    "source": "https://github.com/sasona-network/sasona-program/tree/c67865da6cbe3f3023a254c3cef8e4b5c7927ae3"
+  }
+]
