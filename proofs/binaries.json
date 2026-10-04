@@ -22,5 +22,11 @@
     "bytes": 298912,
     "sha256": "c75d07f95de6268e74ebfc27771e5b6fc11e9d6ae11b24773378b8bd06f9d495",
     "source": "https://github.com/sasona-network/sasona-program/tree/e476a0104b42064882118ce54eff816f7f6a27f1"
+  },
+  {
+    "step": "part 1, step 5: cover, claims and release",
+    "bytes": 380168,
+    "sha256": "af63126f7369aa0998c986335ef05114c8ccd4242bd4f8ff85e9387efe53f12a",
+    "source": "https://github.com/sasona-network/sasona-program/tree/bb115558e51e6e6ae0c0434915dcfb907c0915ca"
   }
 ]

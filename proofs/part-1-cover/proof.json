@@ -1,0 +1,26 @@
+{
+  "rpc": "https://api.devnet.solana.com",
+  "program": "7eiHSnDkM4WjJdY36D2Yqsjw893mCMUtBAwMCQ5adL99",
+  "usd_mint": "ACPdQtaC6HKgT8V4GVRke57vtZrbv3zDqTwvENBoRPCy",
+  "binary": {
+    "bytes": 380168,
+    "sha256": "af63126f7369aa0998c986335ef05114c8ccd4242bd4f8ff85e9387efe53f12a"
+  },
+  "upgrade_tx": "57WpmKSFb8HEdNZSWQ41VgrMX8YD46dxLZkCFNavHj4exzCb9NCR9zcnH8Yp7Ga4bwgz7mAoM16T5zqHYTyd6hZX",
+  "judge": "CCsLKV9yCucqYmdb1KarjsTD5pA6q2fzucBa9ozCTSFu",
+  "depositors": [
+    "CCsLKV9yCucqYmdb1KarjsTD5pA6q2fzucBa9ozCTSFu",
+    "CFFSXFb3bShcMczc3EoH2NFd5W9irrqi2aBeyW493pzQ"
+  ],
+  "join_txs": [
+    "3dZkUBAitGUPcAaPfbNtGRqpyQo6AZLU14bWLXLjjeS7UEhP6YqDGm4x5e8fgbxHbEPDutHxsxv4gQLxpf3xkhm9",
+    "2H7QgsKTAAh4WWyBLk4Tmhd89aWn6v7Adwf3QkHrUMeFEVUueUADftj3KWpd56QePpMaK6KuewTYcfN82d5A3zmt"
+  ],
+  "claim_txs": [
+    "4j8Kvd2di6KYMYF3KrH78gDpHByViMoYVpMEeTsyh8X5un7uta7JsKDtyAaHLNUF6kezCrWZZaKogUTumXo7iJCU"
+  ],
+  "deposit_after_claim_tx": "wyxHT6YBrPi4rPzG3qrawYNqrQH9ABhfwpF4yku3QwEwwUp2HK6WRiHYyMn5L4FPpsUy1LRZSzqLnZNFm3KCxKV",
+  "ask_back_txs": [
+    "5GZB8NRdLKWnZofPhwVxWgcrnV9q7yXp84UWuELzJzyQ9eM72MyuMwq2YHJP4DHsny6Zpt6d16FyPZLdvQ6XmKwb"
+  ]
+}

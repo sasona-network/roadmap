@@ -1,4 +1,4 @@
-"""Check deposits into the Sasona pool against Solana devnet.
+"""Check the Sasona cover, claims and releases against Solana devnet.
 
     python verify.py
 
@@ -13,6 +13,7 @@ import hashlib
 import json
 import struct
 import sys
+import time
 import urllib.request
 from pathlib import Path
 
@@ -111,6 +112,60 @@ def token_amount(address):
     return struct.unpack_from("<Q", account(address)["bytes"], 64)[0]
 
 
+# ------------------------------------------------------------- one fee tx
+
+def fee_checks(tx, kind, program, pool_usd, pool_coin, fees, network):
+    """Check one fee or settle transaction from its own balances and burns."""
+    keys = [k["pubkey"] for k in tx["transaction"]["message"]["accountKeys"]]
+    meta = tx["meta"]
+    check("called this program", program in keys)
+
+    def balance(which, address):
+        for b in meta[which]:
+            if keys[b["accountIndex"]] == address:
+                return int(b["uiTokenAmount"]["amount"])
+        return 0
+
+    def delta(address):
+        return balance("postTokenBalances", address) - balance("preTokenBalances", address)
+
+    burned = sum(int(ix["parsed"]["info"]["amount"])
+                 for group in meta["innerInstructions"] for ix in group["instructions"]
+                 if ix.get("program") == "spl-token" and ix.get("parsed", {}).get("type") == "burn")
+    out = -delta(pool_coin)
+    shared = delta(network)
+    usd_before = balance("preTokenBalances", pool_usd)
+    coins_before = balance("preTokenBalances", pool_coin)
+
+    if kind == "fee":
+        markup = delta(pool_usd)
+        payer = keys[0]
+        paid = sum(int(b["uiTokenAmount"]["amount"]) * (1 if which == "preTokenBalances" else -1)
+                   for which in ("preTokenBalances", "postTokenBalances") for b in meta[which]
+                   if b.get("owner") == payer and b["mint"] == PROOF["usd_mint"])
+        reserve = markup * 5 // 15
+        buy = markup - reserve
+        check("the payer paid exactly what the pool received", paid == markup, f"${markup / 1e6:,.6f}")
+    else:
+        markup = -delta(fees)
+        reserve = 0
+        buy = markup
+        check("the waiting entry fees moved into the pool", delta(pool_usd) == markup, f"${markup / 1e6:,.2f}")
+    burn_usd = min(-(-markup * 300 // 10_000), buy)      # three percent, rounded up
+
+    # The pool's dollar account held nothing beyond its records, so its balance
+    # before is the reserve the price was read from.
+    # The reserve goes in first, so the buy is priced against the deeper pool.
+    expected = coins_before * buy // (usd_before + reserve + buy)
+    check("coins bought match the pool's price, with the reserve not spent", out == expected,
+          f"{out / 1e6:,.6f} coins for ${buy / 1e6:,.6f}")
+    check("3% of the markup's coin was burned, rounded up", burned == -(-out * burn_usd // buy),
+          f"{burned / 1e6:,.6f} coins")
+    check("the rest went to the network", shared == out - burned, f"{shared / 1e6:,.6f} coins")
+    if reserve:
+        print(f"        kept in the pool as depth: ${reserve / 1e6:,.6f}")
+
+
 # ------------------------------------------------------------------ checks
 
 def main():
@@ -177,51 +232,87 @@ def main():
     check("its fee account holds what it records", token_amount(fees) == fees_held,
           f"${fees_held / 1e6:,.2f}")
 
-    print("\nthe price")
-    # A deposit must not move the price. Read from each deposit's own balances
-    # before and after, so this stays checkable after later steps move it.
-    for sig in PROOF["deposit_txs"]:
+    print("\nthe cover")
+    cover, _ = find_pda([b"cover"], program)
+    cover_vault, _ = find_pda([b"cover-vault"], program)
+    ca = account(cover)
+    check("is owned by the program", ca is not None and ca["owner"] == program, cover)
+    total_shares, cover_coins = struct.unpack_from("<QQ", ca["bytes"], 9)
+    cv = account(cover_vault)
+    check("its vault is held by the pool, which has no key", cv is not None and b58encode(cv["bytes"][32:64]) == pool)
+    check("its vault holds the coins it records", token_amount(cover_vault) == cover_coins,
+          f"{cover_coins / 1e6:,.0f} coins behind {total_shares / 1e6:,.0f} shares")
+
+    held = 0
+    for who in PROOF["depositors"]:
+        g = account(find_pda([b"guarantee", b58decode(who)], program)[0])
+        if g is None:
+            check(f"{who[:8]}… has a guarantee", False)
+            continue
+        shares = struct.unpack_from("<Q", g["bytes"], 40)[0]
+        exit_ = account(find_pda([b"exit", b58decode(who)], program)[0])
+        waiting = struct.unpack_from("<Q", exit_["bytes"], 40)[0] if exit_ else 0
+        held += shares + waiting
+        check(f"{who[:8]}…'s guarantee is shares of the cover", b58encode(g["bytes"][8:40]) == who,
+              f"{shares / 1e6:,.0f} held" + (f", {waiting / 1e6:,.0f} asked back" if waiting else ""))
+        check(f"{who[:8]}…'s old vault is closed", account(find_pda([b"guarantee-vault", b58decode(who)], program)[0]) is None)
+    check("every share is accounted for by these depositors", held == total_shares)
+
+    def tx_of(sig):
         tx = rpc("getTransaction", [sig, {"encoding": "jsonParsed", "commitment": "finalized",
                                           "maxSupportedTransactionVersion": 0}])
+        check("is final and succeeded", tx is not None and tx["meta"]["err"] is None)
+        return tx
+
+    def balances(tx):
         keys = [k["pubkey"] for k in tx["transaction"]["message"]["accountKeys"]]
 
         def bal(which, address):
-            return next(int(b["uiTokenAmount"]["amount"]) for b in tx["meta"][which]
-                        if keys[b["accountIndex"]] == address)
+            for b in tx["meta"][which]:
+                if keys[b["accountIndex"]] == address:
+                    return int(b["uiTokenAmount"]["amount"])
+            return 0
+        return keys, bal
 
-        u0, u1 = bal("preTokenBalances", pool_usd), bal("postTokenBalances", pool_usd)
-        c0, c1 = bal("preTokenBalances", pool_coin), bal("postTokenBalances", pool_coin)
-        drift = c0 * u1 - c1 * u0
-        check(f"{sig[:8]}… left the price where it was", 0 <= drift < u0,
-              f"{c0 / u0:,.4f} → {c1 / u1:,.4f} coins a dollar")
+    for sig in PROOF["join_txs"]:
+        print(f"\njoining the cover  {sig[:8]}…")
+        tx = tx_of(sig)
+        ops = [ix["parsed"]["type"] for g in tx["meta"]["innerInstructions"] for ix in g["instructions"]
+               if ix.get("program") == "spl-token"]
+        check("moved the old vault's coins and closed it", "transfer" in ops and "closeAccount" in ops, ", ".join(ops))
 
-    print("\nthe depositors")
-    for who in PROOF["depositors"]:
-        g = account(find_pda([b"guarantee", b58decode(who)], program)[0])
-        vault, _ = find_pda([b"guarantee-vault", b58decode(who)], program)
-        if g is None:
-            check(f"{who[:8]}… has a guarantee record", False)
+    for sig in PROOF["claim_txs"]:
+        print(f"\na claim  {sig[:8]}…")
+        tx = tx_of(sig)
+        keys, bal = balances(tx)
+        signers = [k["pubkey"] for k in tx["transaction"]["message"]["accountKeys"] if k["signer"]]
+        check("was approved by the judge key, for now the program's upgrade key", PROOF["judge"] in signers)
+        paid = bal("preTokenBalances", pool_usd) - bal("postTokenBalances", pool_usd)
+        usd0, coins0 = bal("preTokenBalances", pool_usd), bal("preTokenBalances", pool_coin)
+        to = [keys[b["accountIndex"]] for b in tx["meta"]["postTokenBalances"]
+              if b["mint"] == PROOF["usd_mint"] and keys[b["accountIndex"]] not in (pool_usd, fees)]
+        got = sum(bal("postTokenBalances", a) - bal("preTokenBalances", a) for a in to)
+        check("the buyer received what left the pool", got == paid and paid > 0, f"${paid / 1e6:,.2f}")
+        burns = {ix["parsed"]["info"]["account"]: int(ix["parsed"]["info"]["amount"])
+                 for g in tx["meta"]["innerInstructions"] for ix in g["instructions"]
+                 if ix.get("program") == "spl-token" and ix["parsed"]["type"] == "burn"}
+        expected = -(-paid * coins0 // usd0)
+        check("the pool burned the coins behind those dollars, so the price did not fall",
+              burns.get(pool_coin) == expected, f"{expected / 1e6:,.6f} coins")
+        check("the cover burned the same, so the guarantees carried it", burns.get(cover_vault) == expected)
+
+    for sig in PROOF["ask_back_txs"]:
+        print(f"\nasking a guarantee back  {sig[:8]}…")
+        tx = tx_of(sig)
+        owner = tx["transaction"]["message"]["accountKeys"][0]["pubkey"]
+        e = account(find_pda([b"exit", b58decode(owner)], program)[0])
+        if e is None:
+            print("        (released since)")
             continue
-        owner = b58encode(g["bytes"][8:40])
-        check(f"{who[:8]}…'s guarantee record names them", owner == who)
-        v = account(vault)
-        if v is None:
-            # Step 5 moved every guarantee into one shared cover and closed
-            # these vaults; the step 5 proof checks the guarantee there.
-            print(f"        {who[:8]}…'s guarantee has since moved into the shared cover (part 1, step 5)")
-            continue
-        coins = struct.unpack_from("<Q", g["bytes"], 40)[0]
-        check(f"{who[:8]}…'s vault holds what the record says", token_amount(vault) == coins,
-              f"{coins / 1e6:,.0f} coins")
-        check(f"{who[:8]}…'s vault is held by the pool, not by them", b58encode(v["bytes"][32:64]) == pool)
-
-    print("\nthe transactions")
-    for sig in PROOF["deposit_txs"]:
-        tx = rpc("getTransaction", [sig, {"encoding": "json", "commitment": "finalized",
-                                          "maxSupportedTransactionVersion": 0}])
-        ok = (tx is not None and tx["meta"]["err"] is None
-              and program in tx["transaction"]["message"]["accountKeys"])
-        check(f"{sig[:8]}… is final, succeeded, and called this program", ok)
+        shares, ready_at = struct.unpack_from("<Qq", e["bytes"], 40)
+        days = (ready_at - tx["blockTime"]) / 86400
+        check("waits 45 days, still paying claims", days >= 45 - 1 / 24,
+              f"{shares / 1e6:,.0f} shares, ready {time.strftime('%Y-%m-%d', time.gmtime(ready_at))}")
 
     print()
     if failures:
