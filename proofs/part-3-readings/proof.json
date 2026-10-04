@@ -1,0 +1,10 @@
+{
+  "rpc": "https://api.devnet.solana.com",
+  "program": "7eiHSnDkM4WjJdY36D2Yqsjw893mCMUtBAwMCQ5adL99",
+  "protocol": "https://github.com/sasona-network/sasona-protocol/blob/a89850c201887549c6bef21a2b3de72d980ae3bb/SPEC.md",
+  "upgrade_tx": "2Z639cSGD56erMryMFvac7eshhUD5Mxu9vU6PSaqrSTTPAGvZih4iRj3PS4DXNCpTWqqETapmUEscCe6Dgy26diJ",
+  "readings": {
+    "honest": "delivered",
+    "canned": "wrong_answer"
+  }
+}

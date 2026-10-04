@@ -1,0 +1,11 @@
+{
+  "round": "6P7gQS4EbVG8eykGsFbQ1iM7Jhgd5e7oHMFUqAaX1RF7",
+  "service": "https://sandbox.example.net/run/rust",
+  "sent_to": "http://127.0.0.1:8401",
+  "nonce": "03cfe28eccaac8cac929db129981abab",
+  "question_hash": "b847f06f83454f51331e0b42d7164654796ea4288dc16eff7072c60621ab8d11",
+  "reply_hash": "dcdca66d75fc30e8f6dfb7b3481414a627f5352d834afb6d93f45b0e55d8b2b6",
+  "verdict": 1,
+  "commit_tx": "5Z3phfC9KrmDgem9NQUeGopbhmLcCSqtdLUhHJ6cbTeZn4QG1dUvaxfatax7craY67bNhmDKwsYaxzYuh6eUtuRy",
+  "reveal_tx": "Z8wdhiLzYgpaVcH26EyKHSgG5nPPaPWi1QLEfiphLzZ9xSK7knGWjcxRcwruvhDStFnWJBLfMbAK4x9bXnLno4E"
+}
