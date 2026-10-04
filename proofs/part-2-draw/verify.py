@@ -88,8 +88,16 @@ def find_pda(seeds, program):
 def rpc(method, params):
     body = json.dumps({"jsonrpc": "2.0", "id": 1, "method": method, "params": params}).encode()
     req = urllib.request.Request(RPC, body, {"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        reply = json.load(r)
+    # The public devnet endpoint is sometimes slow; a timeout is not a failed check.
+    for attempt in range(4):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                reply = json.load(r)
+            break
+        except OSError:
+            if attempt == 3:
+                raise
+            time.sleep(2 * (attempt + 1))
     if "error" in reply:
         raise RuntimeError(reply["error"])
     return reply["result"]
