@@ -18,7 +18,7 @@ Each part is built, published, and proven before the next one starts.
 | 2 | Fair assignment | Who tests which service is drawn from a public seed, so anyone can re-run the draw. | Done on devnet. Proofs: [the rule](proofs/part-2-spec), [rounds](proofs/part-2-rounds), [a draw](proofs/part-2-draw) |
 | 3 | Committed answers | The test is locked in before the seller replies, so the result can be checked afterwards. | Done on devnet. Proofs: [the rule](proofs/part-3-spec), [readings](proofs/part-3-readings) |
 | 4 | Second readings | A different member re-tests a service, to catch a rating that was wrong or has gone stale. | Done on devnet. Proofs: [the rule](proofs/part-4-spec), [pairs](proofs/part-4-second-readings) |
-| 5 | Member stakes | A member stakes on the services they vouch for, and loses it if their reading was false. | Not started |
+| 5 | Member stakes | A member stakes on the services they vouch for, and loses it if their reading was false. | Done on devnet; the false reading's stake can be taken from 11 October. Proofs: [the rule](proofs/part-5-spec), [members and challenges](proofs/part-5-members) |
 | 6 | Ranking by price | Services are ranked by what members charge to insure them, not by us. | Not started |
 | 7 | Chargebacks | A buyer disputes a purchase, members drawn at random decide, and the buyer is paid back. | Not started |
 | 8 | Payment channels | Many small payments settle on chain as one. | Not started |

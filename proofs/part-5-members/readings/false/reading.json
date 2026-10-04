@@ -1,0 +1,12 @@
+{
+  "round": "8nH2s7e9i7fXX9v5XrExGfuHJtsKR4R2rdbHLap8Q9t4",
+  "service": "https://search.example.org/query",
+  "sent_to": "http://127.0.0.1:8402",
+  "nonce": "7dd30fc067da5942887995652f2917d9",
+  "question_hash": "ad39dfa09b3cd9e12b25f35c4b6cece2822a5156fa1e2ebb2d8d50150165477c",
+  "reply_hash": "380dcee48aae66ee56809ae02ed2ad93aac2e3fd788e399ccec385fbde58434a",
+  "verdict": 1,
+  "verdict_the_rule_gives": 2,
+  "commit_tx": "5PyqwzNuh9UNsWbjARBJC1VWLYPJnwCde31jydLF7ZJrp6sPViaZ2h82vjrSrieSobSwUznrjqDwCC1KsxqU8QZC",
+  "reveal_tx": "2YHzJ1Kvqr8CMz1H19gULx9x7HHArpraBa369gw1ouRH3m4Dbc2LhHJ6iHUvAMHtjpKjnFfsXXg5qwBzpjVphU3R"
+}

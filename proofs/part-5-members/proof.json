@@ -1,0 +1,31 @@
+{
+  "rpc": "https://api.devnet.solana.com",
+  "program": "7eiHSnDkM4WjJdY36D2Yqsjw893mCMUtBAwMCQ5adL99",
+  "protocol": "https://github.com/sasona-network/sasona-protocol/blob/dd6cea3d0de0410129ddb5764219c97cd1b1ecd1/SPEC.md",
+  "round": "8nH2s7e9i7fXX9v5XrExGfuHJtsKR4R2rdbHLap8Q9t4",
+  "members_then": 4,
+  "picks": [
+    "https://search.example.org/query",
+    "https://sandbox.example.net/run/rust",
+    "https://data.example.com/prices"
+  ],
+  "readings": [
+    "honest",
+    "canned",
+    "false"
+  ],
+  "false": [
+    "false"
+  ],
+  "challenges": {
+    "honest": "answered",
+    "false": "upheld"
+  },
+  "transactions": {
+    "challenge honest": "45hZj8hGvLFYqxdwrMvaDTzwtwYMGLjcyjRWVfketWoz7Mxk9ZauhDiKkSxmdwuy4hMrHped9GnEDZPEiuMBvT7X",
+    "challenge false": "5E9JbQLsbiWygruCNVsexYp3RKayZwF85bYrJVCdNgRsCMfGafLofeXUjsS4W1HTjGECwvhNe9TwdHm9tB1ueadt",
+    "reply on chain, honest": "ZViVXoAUujBSohst3ENXo3UGcUjhhjeVGjhPY2VuArabw2Fm3T4nEeSNuLHKiG4Afs7B3cJagaXRkGacZjPhjfb",
+    "answer, honest": "1Fr1bujWLDP1jwzxKto8uYHAQRU3xBir6WXrTrNZCPZPn2axc5BTpXmW4nQKthLa1XmsD6hS1P16TY2mcjFhtbF",
+    "reply on chain, false": "3iYsXxN53LLzWagxnnooYgcESmG9pVS7zMuDqKDf5WomuNP2VFcd9xj1j9YzEusvw4TidsG7L6adgnrRxg8ZGHDX"
+  }
+}

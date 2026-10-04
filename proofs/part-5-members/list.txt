@@ -1,0 +1,3 @@
+https://data.example.com/prices
+https://sandbox.example.net/run/rust
+https://search.example.org/query
