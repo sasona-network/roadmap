@@ -41,8 +41,8 @@ The script reads the chain directly. You don't need to trust our description of 
 | [`roadmap`](https://github.com/sasona-network/roadmap) | This plan, and the proofs |
 | [`sasona-protocol`](https://github.com/sasona-network/sasona-protocol) | The rules every implementation follows, with test values to check against |
 | [`sasona-program`](https://github.com/sasona-network/sasona-program) | The Solana contract |
-
-More repositories are added as the parts that need them begin.
+| [`sasona-node`](https://github.com/sasona-network/sasona-node) | The member's software: what a member runs to test the services a round has drawn |
+| [`sasona-sdk`](https://github.com/sasona-network/sasona-sdk) | Use the pool from an agent or an app |
 
 ## Following along
 
