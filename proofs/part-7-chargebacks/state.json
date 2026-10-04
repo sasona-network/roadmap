@@ -1,0 +1,10 @@
+{
+ "merchant": "HZtTgTbNVZH7CvTz1Nw3TND25PejnmpoSgErLFo9uQHC",
+ "round": "WsEzAFV9p7jJZpzibxsZXPLe69dhkkEh3NXdzjm1quE",
+ "reader": "depositor-2",
+ "reading": "3bhHnFZtbdCyYbr437Qb4PchF5tCcbfm8rz3EzAT7qek",
+ "purchase-1": "GLF7XqcVbCBUrjaUrC3Ub538X1P3hDFmB3PYGiPS2iAB",
+ "replayer-1": "devnet-deployer",
+ "purchase-2": "4e5bG4guQxXRjiY1JmmPjVVg3koRrdxmdMF8EubpZJTu",
+ "replayer-2": "devnet-deployer"
+}

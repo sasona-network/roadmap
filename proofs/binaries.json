@@ -58,5 +58,11 @@
     "bytes": 651536,
     "sha256": "a40c037ea01ef3457c6700bff4fdf3d957202f597d398edc20aca0a91505438e",
     "source": "https://github.com/sasona-network/sasona-program/tree/f527231b5ce5882cce8a98fcd37ea923af0894f4"
+  },
+  {
+    "step": "part 7, steps 2 and 3: purchases and chargebacks",
+    "bytes": 798024,
+    "sha256": "ea5fe3c579c372f206e7dd846af746eb9e8714b76752b199df4665cb207be1dd",
+    "source": "https://github.com/sasona-network/sasona-program/tree/fa429c04b3b127fd41a61261df3369f753e703d8"
   }
 ]

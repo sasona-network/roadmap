@@ -1,0 +1,36 @@
+{
+ "rpc": "https://api.devnet.solana.com",
+ "program": "7eiHSnDkM4WjJdY36D2Yqsjw893mCMUtBAwMCQ5adL99",
+ "protocol": "https://github.com/sasona-network/sasona-protocol/blob/74ff072d32e32bd20d685c7580103730e4921ad1/SPEC.md",
+ "usd": "ACPdQtaC6HKgT8V4GVRke57vtZrbv3zDqTwvENBoRPCy",
+ "reading": "3bhHnFZtbdCyYbr437Qb4PchF5tCcbfm8rz3EzAT7qek",
+ "merchant": "HZtTgTbNVZH7CvTz1Nw3TND25PejnmpoSgErLFo9uQHC",
+ "buyer": "Hgb1nyHjCqVXtL4DhF3sL3fJjkeacNpYGsVk17rTmC16",
+ "rate": 150,
+ "purchases": {
+  "1": {
+   "story": "charged back while the service worked",
+   "id": 1,
+   "address": "GLF7XqcVbCBUrjaUrC3Ub538X1P3hDFmB3PYGiPS2iAB",
+   "free": true,
+   "buy": "b5UHK1JAHVXaiWwrtZPqPyobMTjUindJiW6DFgE6DMmqjfjCBsae2DodYZRWU5o3fKY1vSB4sXB3J3n5MT21oB3",
+   "charge_back": "3gHcBkk32d3e5bJH48qNkm364PDUaRRwV7PGW9pG7AbZBnXsLpDs7fMf6PX9Fp1naEBtfm3kXfh7pNjRmnWyhN55",
+   "settle": "2jbs6Bdpr5YRr2GW3s6r3j58NEDcNyZsunePBu3xWEjLgdd8eHqRKogFXecQJ96QMWZxnM1o717gfimYruU4uNFu"
+  },
+  "2": {
+   "story": "charged back after the service broke",
+   "id": 2,
+   "address": "4e5bG4guQxXRjiY1JmmPjVVg3koRrdxmdMF8EubpZJTu",
+   "free": false,
+   "after": "1",
+   "buy": "613Dct4kuopYeJVRmdGvekuDAp77uRA2PyPHxA2ERZGbmXjEP6gq4YzTbVj1W8zowCEHK8quvcMhr6LKw7jd1JRr",
+   "charge_back": "3rEL3HqVfG4pAvA4ckDq645X6piaihqUqDbQfGXmtfBjARes4MTh6nDFfbKwK2TroQ5SNiGgWiZvMDix7tEsfKxZ",
+   "settle": "2aT9eGK5dCSj1GSixP3VX69zU2pNR75JfXGneh13aS4FbjxJPTRP2Wgn631z7NjwpcCR5pqh4Tunts9AtZYEjZBA"
+  }
+ },
+ "transactions": {
+  "round opened": "3NDyGP5MkC9dzDdpmt3ZDfLs7QEYgpMzC2y19GJmaoqccGPMkAKxWFB5V3PdJT5ZEFtCVSZWvMb7nWBTfGphNyFP",
+  "round revealed": "3MJc5aNnfoqF6zPtLWi6NkVN6ZMyHERsC9QTYAgjZGdr3G2vkWA3frrTPDwXrjfdDfGKcYFMTYVWqgWtzfiViQ5T",
+  "quote, 150 bps": "Mmoyt2KAG7mXhYQpAzFMqGMZ6driLJyHe7bzEhG2dNoBamVQv5iPZF8rdnRZTujAkjf7zc5y9Vr8kY1N4LQ627k"
+ }
+}
