@@ -1,0 +1,16 @@
+{
+  "rpc": "https://api.devnet.solana.com",
+  "program": "7eiHSnDkM4WjJdY36D2Yqsjw893mCMUtBAwMCQ5adL99",
+  "protocol": "https://github.com/sasona-network/sasona-protocol/blob/688da27a605492308daf14884d12e68347fd4bf8/SPEC.md",
+  "upgrade_tx": "cnqXTcRxq5WRgwFV4G9hzgh53AoLptTzD1fBJwkCEfv26fpvNw3NYgAU7tuhzC9oydqSs6GEZEVzVbbzddKHca8",
+  "round": "6P7gQS4EbVG8eykGsFbQ1iM7Jhgd5e7oHMFUqAaX1RF7",
+  "open_tx": "646xCs8zbZw87y1dmkJE9Qnuig98yo9Few8b48Mzo1Z3cAsYrKfFPRMXF1Aqmi9BgSKXNnuZsDXEX6BApHsKTEnR",
+  "reveal_tx": "2DrRSWHT4H16kB7MhrN847Dj1142QUwLsi4WwJfvUSxzZCbxumDsTixQKZcpQL6TD4wK4KxCzDHSQWriamkEazCt",
+  "picks": [
+    "https://weather.example.com/week",
+    "https://sandbox.example.net/run/rust",
+    "https://data.example.com/prices",
+    "https://email.example.org/send",
+    "https://search.example.org/query"
+  ]
+}

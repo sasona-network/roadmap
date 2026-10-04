@@ -28,3 +28,7 @@ cd rust && cargo test
 - Changing any one detail breaks the values: the attempt counted little-endian, the zero byte between candidates left out, or a label misspelt. Each was tried, and each fails.
 - An independent review of the first draft found that the number of picks was not committed, so an opener who saw the order could stop just before a service they did not want. It also found that a skipped Solana slot left the entropy undefined, that host spellings let one service count as many hosts, and that non-ASCII lowercasing differs between languages. All four are fixed in this version, and the limits it could not fix are stated in the spec.
 - Both implementations are ours. One written by somebody else is what would really test the specification.
+
+## Since then
+
+[Version 0.2.0](https://github.com/sasona-network/sasona-protocol/blob/688da27a605492308daf14884d12e68347fd4bf8/SPEC.md) adds that a list can be drawn once, after the review of [step 2](../part-2-rounds) found the way around it, and names the validator case plainly. Every value 0.1.0 computes is unchanged.

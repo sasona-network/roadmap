@@ -28,5 +28,11 @@
     "bytes": 380168,
     "sha256": "af63126f7369aa0998c986335ef05114c8ccd4242bd4f8ff85e9387efe53f12a",
     "source": "https://github.com/sasona-network/sasona-program/tree/bb115558e51e6e6ae0c0434915dcfb907c0915ca"
+  },
+  {
+    "step": "part 2, step 2: rounds on chain",
+    "bytes": 409576,
+    "sha256": "ddc7334ba095731cc5a4f12ff6ac4b41de3055bead888e774936beb847e80012",
+    "source": "https://github.com/sasona-network/sasona-program/tree/ae4b3d71c7fd385aeffd5b0536ca658404ef21c2"
   }
 ]
