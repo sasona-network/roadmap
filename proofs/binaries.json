@@ -16,5 +16,11 @@
     "bytes": 289376,
     "sha256": "bc05399f6af8191c0b83e8d3d10b4e1fe5d0a34d3767504d26c8e221b7aaede2",
     "source": "https://github.com/sasona-network/sasona-program/tree/af517f2c26cade7bed0a6504fe3b0f0de002d0d2"
+  },
+  {
+    "step": "part 1, step 4: adding depth",
+    "bytes": 298912,
+    "sha256": "c75d07f95de6268e74ebfc27771e5b6fc11e9d6ae11b24773378b8bd06f9d495",
+    "source": "https://github.com/sasona-network/sasona-program/tree/e476a0104b42064882118ce54eff816f7f6a27f1"
   }
 ]
