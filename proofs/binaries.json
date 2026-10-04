@@ -40,5 +40,11 @@
     "bytes": 454920,
     "sha256": "878e1b3d655c3af39dfe704e146854ceb5bf6c9b746da0d7bf6d4b8e92ff441d",
     "source": "https://github.com/sasona-network/sasona-program/tree/e31f6b38e846097053c2a9f31983cd947ed1f729"
+  },
+  {
+    "step": "part 4, step 2: second readings on chain",
+    "bytes": 481272,
+    "sha256": "e092617aed7f164e0cdfd4b1cf0abe416f525591cd56f9a5d1125346bb0b0813",
+    "source": "https://github.com/sasona-network/sasona-program/tree/8b6ccbad40e4bcec8f6fbe96846e9a0b6a1fb800"
   }
 ]

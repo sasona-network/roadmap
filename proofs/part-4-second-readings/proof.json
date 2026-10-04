@@ -1,0 +1,21 @@
+{
+  "rpc": "https://api.devnet.solana.com",
+  "program": "7eiHSnDkM4WjJdY36D2Yqsjw893mCMUtBAwMCQ5adL99",
+  "protocol": "https://github.com/sasona-network/sasona-protocol/blob/86fb6cc081e64d5f2ab45674d2b251a52caa6a15/SPEC.md",
+  "upgrade_tx": "428hDrB544W3bkDsH32BBvFyMLZ1hUZkRGD53CuDqabsAqApj1mmGvyKuMnJR7Ms3Hfb3a9hv445uBgoHJqKJfp9",
+  "round": "GAod1HZzcwzw3xiHdhXnp5PfUFMzpWdNJkBt7d6GtW9Q",
+  "open_tx": "5obMw9omguRxLsqTqunpnvsXjAztn9rkDCaGUbNvDgNxvgW31h8odESzq4o9j6FptjHetp89zEUf2fWMtnYnFtb7",
+  "reveal_tx": "3U2X51doq6eP2EaQmJx8WQkHnDBzhayv1aK3kj73BYSgzPJZxrUaQ9Mjk1Yhgq89xwRmjE65RGDxenRsXqm9bwPk",
+  "picks": [
+    "https://sandbox.example.net/run/rust",
+    "https://data.example.com/prices"
+  ],
+  "pairs": {
+    "decayed": "false_or_decayed",
+    "recovered": "works_now"
+  },
+  "settle_txs": {
+    "decayed": "2cYuDN8CvTtdfc9ZU4crxMESN5acBzqyrS2X9H7KE8AkfLQHeN2yrjBT84n25PKKsnYGtCW795gkZsmwohxL4ZRE",
+    "recovered": "223Nj1YVWZJD1dNR73sHo2dJQVQxkSBx5PWnrBSV4mji4Zqj7zPAuTiSFZMTm9SrJhtfg3WVW8rngkTUnsCyJYtF"
+  }
+}

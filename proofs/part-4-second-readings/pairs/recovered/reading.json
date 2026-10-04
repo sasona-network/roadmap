@@ -1,0 +1,12 @@
+{
+  "round": "GAod1HZzcwzw3xiHdhXnp5PfUFMzpWdNJkBt7d6GtW9Q",
+  "service": "https://data.example.com/prices",
+  "sent_to": "http://127.0.0.1:8401",
+  "nonce": "649b5844a8b36aa2cf474777af6c1969",
+  "question_hash": "b7afb9266fec03b177d5dabc21b11dee92d5be0c701d4c7067f5e74340946d81",
+  "reply_hash": "e5fa8b2874bb20178397d6579f10f15cfb475a3208c206102a0a19f9e3b48478",
+  "verdict": 1,
+  "commit_tx": "656qwFFhWQUEjMH4hPFMEXF74oH24oTSWu3PNiDggAGx8eZDpLTW1PgWvf2XVQPu76SG6Jq9Atb5LLUzM75tBTak",
+  "reveal_tx": "2MiYeq7CmjS93fvzGFEfYZmqKF6ZYirWmpsz4XdCA8KWBdSaQfBpmNkVGSxjirVggJbbqqS8mnFvRrVQSRFNx3CN",
+  "first": "H8Vzngyst4JJ7YtesJytHGUf1PeNHraUnXqzjL4w2qvz"
+}

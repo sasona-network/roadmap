@@ -1,0 +1,2 @@
+https://data.example.com/prices
+https://sandbox.example.net/run/rust
