@@ -19,7 +19,7 @@ Each part is built, published, and proven before the next one starts.
 | 3 | Committed answers | The test is locked in before the seller replies, so the result can be checked afterwards. | Done on devnet. Proofs: [the rule](proofs/part-3-spec), [readings](proofs/part-3-readings) |
 | 4 | Second readings | A different member re-tests a service, to catch a rating that was wrong or has gone stale. | Done on devnet. Proofs: [the rule](proofs/part-4-spec), [pairs](proofs/part-4-second-readings) |
 | 5 | Member stakes | A member stakes on the services they vouch for, and loses it if their reading was false. | Done on devnet; the false reading's stake can be taken from 11 October. Proofs: [the rule](proofs/part-5-spec), [members and challenges](proofs/part-5-members) |
-| 6 | Ranking by price | Services are ranked by what members charge to insure them, not by us. | Not started |
+| 6 | Ranking by price | Services are ranked by what members charge to insure them, not by us. | Done on devnet. Proofs: [the rule](proofs/part-6-spec), [quotes and the ranking](proofs/part-6-ranking) |
 | 7 | Chargebacks | A buyer disputes a purchase, members drawn at random decide, and the buyer is paid back. | Not started |
 | 8 | Payment channels | Many small payments settle on chain as one. | Not started |
 | 9 | Spending limits | An agent's key can never spend more than the limit its owner set. | Not started |

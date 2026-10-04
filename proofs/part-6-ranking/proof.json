@@ -1,0 +1,35 @@
+{
+  "rpc": "https://api.devnet.solana.com",
+  "program": "7eiHSnDkM4WjJdY36D2Yqsjw893mCMUtBAwMCQ5adL99",
+  "protocol": "https://github.com/sasona-network/sasona-protocol/blob/f2b593aff9cab5df6ec67709731ce6014c86a3f2/SPEC.md",
+  "lists": {
+    "part-2-draw": "candidates.txt",
+    "part-4-second-readings": "list.txt",
+    "part-5-members": "list.txt"
+  },
+  "ranking": [
+    [
+      "https://search.example.org/query",
+      40
+    ],
+    [
+      "https://sandbox.example.net/run/rust",
+      150
+    ]
+  ],
+  "ranking_after_uphold": [
+    [
+      "https://sandbox.example.net/run/rust",
+      150
+    ]
+  ],
+  "false_reading": "6RkwqxPp2FDrPUr48qfsR8111BhfvmBZCQYPoL1i5tGL",
+  "refused": {
+    "https://data.example.com/prices": "3KcYdT1v9Bt3VgvJKNpLgkmsL29DePTcttvzhkBeTugn"
+  },
+  "transactions": {
+    "quote, rust, 150 bps": "5QkVTKq7pUrY43odW4TUPCQ4xX5tyrqsjBxvU8cyknx7ba3nSoCeX7phTAxfS82L24dsdPDahzDqAGranHdXwsCo",
+    "quote, search, 40 bps": "5AVNEqK1YqES8pScEYNojr4SjguHUjPDo6DZa1cjU2PVeogRwHozM8wCvLfdvAAfWrasXm5uicpfYjc65XpKSiQm"
+  },
+  "at": 1791122465
+}

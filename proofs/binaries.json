@@ -52,5 +52,11 @@
     "bytes": 635464,
     "sha256": "a746b580f58acf38dfda270f3d6e6abf947d6cd5eda3a4711220ffd6bb3ad5c4",
     "source": "https://github.com/sasona-network/sasona-program/tree/ea754dbd699c8860789cfa36064663cc616b0323"
+  },
+  {
+    "step": "part 6, step 2: quotes on chain",
+    "bytes": 651536,
+    "sha256": "a40c037ea01ef3457c6700bff4fdf3d957202f597d398edc20aca0a91505438e",
+    "source": "https://github.com/sasona-network/sasona-program/tree/f527231b5ce5882cce8a98fcd37ea923af0894f4"
   }
 ]
