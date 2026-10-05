@@ -21,7 +21,7 @@ Each part is built, published, and proven before the next one starts.
 | 5 | Member stakes | A member stakes on the services they vouch for, and loses it if their reading was false. | Done on devnet; the false reading's stake can be taken from 11 October. Proofs: [the rule](proofs/part-5-spec), [members and challenges](proofs/part-5-members) |
 | 6 | Ranking by price | Services are ranked by what members charge to insure them, not by us. | Done on devnet. Proofs: [the rule](proofs/part-6-spec), [quotes and the ranking](proofs/part-6-ranking) |
 | 7 | Chargebacks | A buyer disputes a purchase, members drawn at random decide, and the buyer is paid back. | Done on devnet. Proofs: [the rule](proofs/part-7-spec), [purchases and chargebacks](proofs/part-7-chargebacks) |
-| 8 | Payment channels | Many small payments settle on chain as one. | Not started |
+| 8 | Payment channels | Many small payments settle on chain as one. | Done on devnet. Proofs: [the rule](proofs/part-8-spec), [a channel](proofs/part-8-channels) |
 | 9 | Spending limits | An agent's key can never spend more than the limit its owner set. | Not started |
 
 ## Proofs

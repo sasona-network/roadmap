@@ -1,0 +1,20 @@
+{
+ "rpc": "https://api.devnet.solana.com",
+ "program": "7eiHSnDkM4WjJdY36D2Yqsjw893mCMUtBAwMCQ5adL99",
+ "protocol": "https://github.com/sasona-network/sasona-protocol/blob/14d4f5d30460c0402cee7fb497d311165cd2b4e2/SPEC.md",
+ "usd": "ACPdQtaC6HKgT8V4GVRke57vtZrbv3zDqTwvENBoRPCy",
+ "agent": "Hgb1nyHjCqVXtL4DhF3sL3fJjkeacNpYGsVk17rTmC16",
+ "node": "CCsLKV9yCucqYmdb1KarjsTD5pA6q2fzucBa9ozCTSFu",
+ "signer": "F2vr7PBk8AidNDCZxdQyRkuShsAYJv79BEwnKnEX4ty3",
+ "merchant": "HZtTgTbNVZH7CvTz1Nw3TND25PejnmpoSgErLFo9uQHC",
+ "quoter": "CFFSXFb3bShcMczc3EoH2NFd5W9irrqi2aBeyW493pzQ",
+ "channel": "HLQTZC2suDa5NQajVv7zKQNwF9PsBoxUkm524JvEGTsC",
+ "transactions": {
+  "open": "5gWtQL6dRUoZrnZ7UPBmXbWSwA8kfqf4qBRUzR4BJa7XE4opKgpEUG83Moqi1y2aJnrDhttbeLHjmhwKwadxzQ8R",
+  "take": "zzJkzZVXTpoesftxRuYDESbMuwf4YUmsQfTFiMsegt17uKmgkbDWCgVhYmJJdskUY58bhFpw9DDukB9BDWcau2B",
+  "sweep": "3c2zG1bmf9yd3XNb5UV6pyuAHbwCbwAR5DgJmWeTzdLdwkp2QEDXgFWprtaH9mXwZDNP9J9c1aBLSkXrhaAZwCrF",
+  "buy": "35tfNmxjW4Zq6nzaUyJ1iSnBDo775J4XFrswCAYTZCWP395EkPXQZFBGm3jKvbksXs7myLaJB1X4fYXkWWKn8y6e",
+  "settle": "5qaNYroP4nTTakixZoW9GuxnyiTL49792Rgbgu7RJ96R9ikaCnbNC9KfrFVSaYsUMGSEUajABMBGHoTo2HqqspEh",
+  "close": "4czPfFuceDxECpkvAC69tXmUrJbfNg94ZVx4AUGu6DxZuS45RmJkPXRVfHZMtMWggeX4iV7nsHsGpr9E1du2SAQJ"
+ }
+}

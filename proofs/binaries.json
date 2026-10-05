@@ -64,5 +64,11 @@
     "bytes": 798024,
     "sha256": "ea5fe3c579c372f206e7dd846af746eb9e8714b76752b199df4665cb207be1dd",
     "source": "https://github.com/sasona-network/sasona-program/tree/fa429c04b3b127fd41a61261df3369f753e703d8"
+  },
+  {
+    "step": "part 8, steps 2 and 3: payment channels and the markup",
+    "bytes": 923376,
+    "sha256": "ee792e9c6f3bc3a4bfa7b31c45e32abab08351ac7e3899659e99e581a2f8d1c2",
+    "source": "https://github.com/sasona-network/sasona-program/tree/1c5ec09325cc2fa993274a79e856b7e1a0c088e6"
   }
 ]

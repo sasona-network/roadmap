@@ -1,0 +1,58 @@
+channel HLQTZC2suDa5NQajVv7zKQNwF9PsBoxUkm524JvEGTsC
+5gWtQL6dRUoZrnZ7UPBmXbWSwA8kfqf4qBRUzR4BJa7XE4opKgpEUG83Moqi1y2aJnrDhttbeLHjmhwKwadxzQ8R
+Transfer 0.01 tokens
+  Sender: J8rD6nsFLMUd2qTuQzn6yHd1DYPkp3CP7MYUctrNgnNq
+  Recipient: HZtTgTbNVZH7CvTz1Nw3TND25PejnmpoSgErLFo9uQHC
+Error: "Error: The recipient address is not funded. Add `--allow-unfunded-recipient` to complete the transfer."
+Transfer 0.01 tokens
+  Sender: J8rD6nsFLMUd2qTuQzn6yHd1DYPkp3CP7MYUctrNgnNq
+  Recipient: HZtTgTbNVZH7CvTz1Nw3TND25PejnmpoSgErLFo9uQHC
+  Recipient associated token account: CqFfcWwo6MnDcoJXaNp4LzCE71ZAQBXbhcgqkVuxqPaJ
+
+Signature: 4Hg9zyi5nDoZF7LwDWAiMwAyrukcss14Gm24eUqqR8G7cp35e9waeYHSLmfy9x3AZ4myfqfVxBWw7bD9gRwfF72n
+
+Transfer 0.01 tokens
+  Sender: J8rD6nsFLMUd2qTuQzn6yHd1DYPkp3CP7MYUctrNgnNq
+  Recipient: HZtTgTbNVZH7CvTz1Nw3TND25PejnmpoSgErLFo9uQHC
+  Recipient associated token account: CqFfcWwo6MnDcoJXaNp4LzCE71ZAQBXbhcgqkVuxqPaJ
+
+Signature: 5V1oLNj4JHEFfnsrVGbqnuL4Hj6VHMXcP3nDWFmo1RVwgvU4Q6b57n9cxQo3tnG56Brisa2YvvBfDCv1FLRVPxwR
+
+Transfer 0.01 tokens
+  Sender: J8rD6nsFLMUd2qTuQzn6yHd1DYPkp3CP7MYUctrNgnNq
+  Recipient: HZtTgTbNVZH7CvTz1Nw3TND25PejnmpoSgErLFo9uQHC
+  Recipient associated token account: CqFfcWwo6MnDcoJXaNp4LzCE71ZAQBXbhcgqkVuxqPaJ
+
+Signature: 41W6Aw44vhZT4MGSmuV5Eois1YJ7CDNbaq2ZX3jdPzJSvwoW4YD2tUB1XSbVRPTMpk3vBuNiPXWrEqZnWCXtNbSP
+
+Transfer 0.01 tokens
+  Sender: J8rD6nsFLMUd2qTuQzn6yHd1DYPkp3CP7MYUctrNgnNq
+  Recipient: HZtTgTbNVZH7CvTz1Nw3TND25PejnmpoSgErLFo9uQHC
+  Recipient associated token account: CqFfcWwo6MnDcoJXaNp4LzCE71ZAQBXbhcgqkVuxqPaJ
+
+Signature: 5NtDLV2ThHEgYs5WteXeBbgAbWdKxiDCDKQ99KNqR6viKaNg9jTsedrHCMWd98WgHyGs3VUmkhNvUo1oqejH6dWV
+
+Transfer 0.01 tokens
+  Sender: J8rD6nsFLMUd2qTuQzn6yHd1DYPkp3CP7MYUctrNgnNq
+  Recipient: HZtTgTbNVZH7CvTz1Nw3TND25PejnmpoSgErLFo9uQHC
+  Recipient associated token account: CqFfcWwo6MnDcoJXaNp4LzCE71ZAQBXbhcgqkVuxqPaJ
+
+Signature: 2jozVrSJaz1dcUFLNeyuPYzzV7M8Kwhi4vLhtVA5ka5NkEvLzhqBMdkMn7jGaAY2SpoJaXeZwWirwRn41NgULa1W
+
+10000.txt
+20000.txt
+30000.txt
+40000.txt
+50000.txt
+paid-1.txt
+paid-2.txt
+paid-3.txt
+paid-4.txt
+paid-5.txt
+zzJkzZVXTpoesftxRuYDESbMuwf4YUmsQfTFiMsegt17uKmgkbDWCgVhYmJJdskUY58bhFpw9DDukB9BDWcau2B
+3c2zG1bmf9yd3XNb5UV6pyuAHbwCbwAR5DgJmWeTzdLdwkp2QEDXgFWprtaH9mXwZDNP9J9c1aBLSkXrhaAZwCrF
+highest rate accepted 150 bps
+purchase qu4M8waw6eHfCThZNXCMVKLQW6WXB1tbjCVPLswfKGq
+35tfNmxjW4Zq6nzaUyJ1iSnBDo775J4XFrswCAYTZCWP395EkPXQZFBGm3jKvbksXs7myLaJB1X4fYXkWWKn8y6e
+5qaNYroP4nTTakixZoW9GuxnyiTL49792Rgbgu7RJ96R9ikaCnbNC9KfrFVSaYsUMGSEUajABMBGHoTo2HqqspEh
+4czPfFuceDxECpkvAC69tXmUrJbfNg94ZVx4AUGu6DxZuS45RmJkPXRVfHZMtMWggeX4iV7nsHsGpr9E1du2SAQJ
