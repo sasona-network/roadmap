@@ -1,12 +1,16 @@
 # Sasona roadmap
 
+> **This is the first design, built on Solana devnet. It has been superseded and is kept as a record.** Nothing here runs on mainnet, and the network's new contract is not built yet.
+>
+> The SASONA coin is live on Solana mainnet since 20 October 2026, at `8xH5RFEkSyneYBhCZh5gi2svgdyrDCREW9SxCfKuYgFd` only; see [`sasona-coin`](https://github.com/sasona-network/sasona-coin). The devnet coin in this repository is a different token, used only for testing.
+>
+> The plan below is the first design's. Parts 1 to 8 were built and proved on devnet, and the proofs stay here as they were. Part 9 will not be built on this design. A new plan will follow the new design.
+
 Sasona is a decentralised payment network for AI agents. An agent says what it wants to buy, the network pays the seller, and the agent is billed only for what actually arrived. If a purchase does not deliver, the agent gets its money back.
 
 The members of the network make that possible. They test the services agents buy from, and they stand behind what they tested with their own stake. Nobody in the middle decides who is trusted.
 
 This repository is the plan, and the record of it being built.
-
-> Everything here runs on Solana devnet. The coin has no value, and nothing touches mainnet.
 
 ## The parts
 
@@ -22,7 +26,7 @@ Each part is built, published, and proven before the next one starts.
 | 6 | Ranking by price | Services are ranked by what members charge to insure them, not by us. | Done on devnet. Proofs: [the rule](proofs/part-6-spec), [quotes and the ranking](proofs/part-6-ranking) |
 | 7 | Chargebacks | A buyer disputes a purchase, members drawn at random decide, and the buyer is paid back. | Done on devnet. Proofs: [the rule](proofs/part-7-spec), [purchases and chargebacks](proofs/part-7-chargebacks) |
 | 8 | Payment channels | Many small payments settle on chain as one. | Done on devnet. Proofs: [the rule](proofs/part-8-spec), [a channel](proofs/part-8-channels) |
-| 9 | Spending limits | An agent's key can never spend more than the limit its owner set. | Not started |
+| 9 | Spending limits | An agent's key can never spend more than the limit its owner set. | Not built on this design |
 
 ## Proofs
 
